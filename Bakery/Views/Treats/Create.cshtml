@@ -1,0 +1,17 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Bakery.Models.Treat
+<h4>Add a new treat</h4>
+
+@Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(model => model.TreatName)
+  @Html.TextBoxFor(model => model.TreatName)
+
+  <input type="submit" value="Add new treat" class="btn btn-secondary" />
+}
+<p>@Html.ActionLink("Back to Treats", "Index")</p>
