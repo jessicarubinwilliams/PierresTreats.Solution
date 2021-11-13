@@ -11,7 +11,7 @@ namespace Bakery.Models
     }
     public int TreatId { get; set; }
 
-    [DisplayName("Treat Name `Last, First` ")]
+    [DisplayName("Treat Name")]
     public string TreatName { get; set; }
     
     public virtual ICollection<FlavorTreat> FlavorTreatJoinEntity { get;}
