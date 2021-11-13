@@ -1,21 +1,29 @@
+using Bakery.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
-using Bakery.Models;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace Bakery.Controllers
 {
+  [Authorize]
   public class TreatsController : Controller
   {
     private readonly BakeryContext _db;
+    private readonly UserManager<ApplicationUser> _userManager;
 
-    public TreatsController(BakeryContext db)
+    public TreatsController(UserManager<ApplicationUser> userManager, BakeryContext db)
     {
+       _userManager = userManager;
       _db = db;
     }
 
+    [AllowAnonymous]
     public ActionResult Index()
     {
       return View(_db.Treats.ToList());
@@ -37,7 +45,7 @@ namespace Bakery.Controllers
         if (treat.TreatName == iteration.TreatName) 
         {
           isUnique = false;
-          ModelState.AddModelError("DuplicateName", iteration.TreatName + " already exists");
+          ModelState.AddModelError("DuplicateTreat", iteration.TreatName + " already exists");
           return View();
         }
       }
