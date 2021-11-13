@@ -1,21 +1,29 @@
+using Bakery.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
-using Bakery.Models;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace Bakery.Controllers
 {
+  [Authorize]
   public class FlavorsController : Controller
   {
     private readonly BakeryContext _db;
+    private readonly UserManager<ApplicationUser> _userManager;
 
-    public FlavorsController(BakeryContext db)
+    public FlavorsController(UserManager<ApplicationUser> userManager, BakeryContext db)
     {
+      _userManager = userManager;
       _db = db;
     }
 
+    [AllowAnonymous]
     public ActionResult Index()
     {
       List<Flavor> model = _db.Flavors.ToList();
@@ -38,7 +46,7 @@ namespace Bakery.Controllers
         if (flavor.FlavorName == iteration.FlavorName) 
         {
           isUnique = false;
-          ModelState.AddModelError("DuplicateName", iteration.FlavorName + " already exists");
+          ModelState.AddModelError("DuplicateFlavor", iteration.FlavorName + " already exists");
           return View();
         }
       }
