@@ -1,0 +1,38 @@
+@{
+  Layout = "_Layout";
+}
+
+@using Bakery.Models;
+@using System.Collections.Generic;
+@using System.Linq;
+
+<h1>Welcome to Pierre's Sweet and Savory Treats</h1>
+
+<hr />
+
+<h4>Pierre's Flavors</h4>
+
+@if (@ViewBag.FlavorList.Count == 0)
+{
+  <h3>No flavors have been added yet!</h3>
+} 
+
+@foreach (Flavor flavor in @ViewBag.FlavorList)
+  {
+    <li>@Html.ActionLink($"{flavor.FlavorName}", "Details", "Flavors", new { id = flavor.FlavorId })</li>
+  }
+
+<h4>Pierre's Treats</h4>
+
+@if (@ViewBag.TreatList.Count == 0)
+{
+  <h3>No treats have been added yet!</h3>
+} 
+
+@foreach (Treat treat in @ViewBag.TreatList)
+  {
+    <li>@Html.ActionLink($"{treat.TreatName}", "Details", "Treats", new { id = treat.TreatId })</li>
+  }
+
+<p>@Html.ActionLink("Flavors Page", "Index", "Flavors")</p>
+<p>@Html.ActionLink("Treats Page", "Index", "Treats")</p>
