@@ -1,6 +1,6 @@
 # Pierre's Sweet and Savory Treats
 
-#### _A web-based application to track a fictitious Bakery's menu options using Entity to manage a many-to-many relationship in an SQL database and Identity to manage user Authentication._
+#### _A web-based application to track a fictitious bakery's menu options using Entity to manage a many-to-many relationship in an SQL database and Identity to manage user Authentication._
 
 #### By **Jessica Williams**
 
