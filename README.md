@@ -2,7 +2,7 @@
 
 #### _A web-based application to track a fictitious bakery's menu options using Entity to manage a many-to-many relationship in an SQL database and Identity to manage user Authentication._
 
-#### By **Jessica Williams**
+#### By **Jessica R. Williams**
 
 ## Table of Contents
 
@@ -68,7 +68,7 @@ This web-based application allows the fictitious Pierre's Bakery to track their 
 ## License <a id="license"></a>
 *[MIT](https://choosealicense.com/licenses/mit/)*
 
-Copyright (c) **2021 Jessica Williams**
+Copyright (c) **2021 Jessica R. Williams**
 
 ## Contact Information <a id="contact"></a>
 **[Jessica R. Williams](mailto:jessicarubinwilliams@gmail.com)**
