@@ -24,7 +24,7 @@ namespace Bakery.Controllers
     [AllowAnonymous]
     public ActionResult Index()
     {
-      return View(_db.Treats.ToList());
+      return View(_db.Treats.OrderBy(x => x.TreatName).ToList());
     }
 
     public ActionResult Create()

@@ -24,7 +24,7 @@ namespace Bakery.Controllers
     [AllowAnonymous]
     public ActionResult Index()
     {
-      List<Flavor> model = _db.Flavors.ToList();
+      List<Flavor> model = _db.Flavors.OrderBy(x => x.FlavorName).ToList();
       return View(model);
     }
 

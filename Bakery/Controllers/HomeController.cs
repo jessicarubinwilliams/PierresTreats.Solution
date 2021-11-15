@@ -18,8 +18,8 @@ namespace Bakery.Controllers
     [HttpGet("/")]
     public ActionResult Index()
     {
-      List<Flavor> FlavorList = _db.Flavors.ToList();
-      List<Treat> TreatList = _db.Treats.ToList();
+      List<Flavor> FlavorList = _db.Flavors.OrderBy(x => x.FlavorName).ToList();
+      List<Treat> TreatList = _db.Treats.OrderBy(x => x.TreatName).ToList();
 
       ViewBag.FlavorList = FlavorList;
       ViewBag.TreatList = TreatList;
