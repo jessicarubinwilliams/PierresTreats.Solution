@@ -55,7 +55,7 @@ namespace Bakery.Controllers
       Microsoft.AspNetCore.Identity.SignInResult result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, isPersistent: true, lockoutOnFailure: false);
       if (result.Succeeded)
       {
-        if (!string.IsNullOrEmpty(returnUrl))
+        if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
         {
           return Redirect(returnUrl);
         }
