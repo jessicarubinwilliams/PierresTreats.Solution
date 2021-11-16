@@ -21,10 +21,9 @@ namespace Bakery.Controllers
       List<Flavor> FlavorList = _db.Flavors.OrderBy(x => x.FlavorName).ToList();
       List<Treat> TreatList = _db.Treats.OrderBy(x => x.TreatName).ToList();
 
-      ViewBag.FlavorList = FlavorList;
-      ViewBag.TreatList = TreatList;
+      Dictionary <string, object> model = new Dictionary <string, object>() { {"Flavors", FlavorList}, {"Treats", TreatList} };
       
-      return View();
+      return View(model);
     }
   }
 }

@@ -10,26 +10,34 @@
 
 <hr />
 
-<h4>Pierre's Flavors</h4>
+<h3>Pierre's Flavors</h3>
 
-@if (@ViewBag.FlavorList.Count == 0)
+@if (@Model["Flavors"].Count == 0)
 {
-  <h3>No flavors have been added yet!</h3>
+  <h4>No flavors have been added yet!</h4>
 } 
-
-@foreach (Flavor flavor in @ViewBag.FlavorList)
-  {
-    <li>@Html.ActionLink($"{flavor.FlavorName}", "Details", "Flavors", new { id = flavor.FlavorId })</li>
-  }
-
-<h4>Pierre's Treats</h4>
-
-@if (@ViewBag.TreatList.Count == 0)
+else
 {
-  <h3>No treats have been added yet!</h3>
-} 
+  <ul>
+    @foreach (Flavor flavor in @Model["Flavors"])
+      {
+        <li>@Html.ActionLink($"{flavor.FlavorName}", "Details", "Flavors", new { id = flavor.FlavorId })</li>
+      }
+  </ul>  
+}
 
-@foreach (Treat treat in @ViewBag.TreatList)
-  {
-    <li>@Html.ActionLink($"{treat.TreatName}", "Details", "Treats", new { id = treat.TreatId })</li>
-  }
+<h3>Pierre's Treats</h3>
+
+@if (@Model["Treats"].Count == 0)
+{
+  <h4>No treats have been added yet!</h4>
+} 
+else
+{
+  <ul>
+    @foreach (Treat treat in @Model["Treats"])
+      {
+        <li>@Html.ActionLink($"{treat.TreatName}", "Details", "Treats", new { id = treat.TreatId })</li>
+      }
+  </ul>  
+}
